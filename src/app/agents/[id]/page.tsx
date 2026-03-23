@@ -76,14 +76,14 @@ export default function AgentProfile({ params }: { params: { id: string } }) {
   ];
 
   return (
-    <div className="min-h-screen py-8 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen pt-32 pb-20 px-4 sm:px-6 lg:px-8">
       <div className="max-w-6xl mx-auto">
         {/* Hero Section */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8 mb-8"
+          className="card-fintech p-12 mb-12"
         >
           <div className="flex flex-col lg:flex-row lg:items-start lg:space-x-8">
             <div className="flex-1">
@@ -130,36 +130,36 @@ export default function AgentProfile({ params }: { params: { id: string } }) {
 
             {/* Pricing Card */}
             <div className="lg:w-80 mt-8 lg:mt-0">
-              <div className="bg-gradient-to-br from-blue-900/30 to-purple-900/30 border border-white/20 rounded-xl p-6">
-                <div className="text-center mb-6">
-                  <div className="text-3xl font-bold text-white mb-1">
+              <div className="card-fintech p-8">
+                <div className="text-center mb-8">
+                  <div className="text-4xl font-bold text-white mb-2">
                     {agent.hourlyRateETH} ETH
                   </div>
-                  <div className="text-gray-400">
+                  <div className="text-gray-400 text-lg">
                     ${agent.hourlyRateUSD}/hour
                   </div>
                 </div>
 
-                <div className="space-y-3 mb-6 text-sm">
-                  <div className="flex justify-between">
-                    <span className="text-gray-400">Response Time:</span>
-                    <span className="text-white">{agent.responseTime}</span>
+                <div className="space-y-4 mb-8">
+                  <div className="flex justify-between items-center py-2">
+                    <span className="text-gray-400">Response Time</span>
+                    <span className="text-white font-medium">{agent.responseTime}</span>
                   </div>
-                  <div className="flex justify-between">
-                    <span className="text-gray-400">Success Rate:</span>
-                    <span className="text-green-400">{agent.successRate}%</span>
+                  <div className="flex justify-between items-center py-2">
+                    <span className="text-gray-400">Success Rate</span>
+                    <span className="text-green-400 font-medium">{agent.successRate}%</span>
                   </div>
-                  <div className="flex justify-between">
-                    <span className="text-gray-400">Completed Jobs:</span>
-                    <span className="text-white">{agent.jobsCompleted}</span>
+                  <div className="flex justify-between items-center py-2">
+                    <span className="text-gray-400">Jobs Completed</span>
+                    <span className="text-white font-medium">{agent.jobsCompleted}</span>
                   </div>
                 </div>
 
                 <button
                   disabled={!agent.isAvailable}
-                  className={`w-full py-3 rounded-lg font-semibold transition-all duration-300 ${
+                  className={`w-full py-4 rounded-xl font-semibold text-lg transition-all duration-200 ${
                     agent.isAvailable
-                      ? 'bg-gradient-to-r from-blue-500 to-purple-600 text-white hover:from-blue-600 hover:to-purple-700 transform hover:scale-105'
+                      ? 'bg-purple-600 hover:bg-purple-700 text-white hover:-translate-y-1 shadow-lg'
                       : 'bg-gray-600 text-gray-400 cursor-not-allowed'
                   }`}
                 >
@@ -175,17 +175,17 @@ export default function AgentProfile({ params }: { params: { id: string } }) {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="mb-8"
+          className="mb-12"
         >
-          <div className="flex space-x-1 bg-white/5 backdrop-blur-sm border border-white/10 rounded-lg p-1">
+          <div className="flex space-x-2 bg-gray-800/50 backdrop-blur-sm border border-gray-700 rounded-xl p-2">
             {tabs.map((tab) => (
               <button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id as any)}
-                className={`flex-1 py-3 px-4 rounded-md font-medium transition-all duration-300 ${
+                className={`flex-1 py-4 px-6 rounded-lg font-medium transition-all duration-200 ${
                   activeTab === tab.id
-                    ? 'bg-gradient-to-r from-blue-500 to-purple-600 text-white'
-                    : 'text-gray-400 hover:text-white hover:bg-white/5'
+                    ? 'bg-purple-600 text-white shadow-lg'
+                    : 'text-gray-400 hover:text-white hover:bg-gray-700'
                 }`}
               >
                 {tab.label}
@@ -202,16 +202,16 @@ export default function AgentProfile({ params }: { params: { id: string } }) {
           transition={{ duration: 0.4 }}
         >
           {activeTab === "overview" && (
-            <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8">
-              <h3 className="text-2xl font-semibold text-white mb-6">Skills & Expertise</h3>
-              <div className="grid md:grid-cols-2 gap-6">
+            <div className="card-fintech p-10">
+              <h3 className="text-3xl font-semibold text-white mb-10">Skills & Expertise</h3>
+              <div className="grid md:grid-cols-2 gap-12">
                 <div>
-                  <h4 className="text-lg font-medium text-white mb-4">Primary Skills</h4>
-                  <div className="flex flex-wrap gap-2">
+                  <h4 className="text-xl font-medium text-white mb-6">Primary Skills</h4>
+                  <div className="flex flex-wrap gap-3">
                     {agent.skills.map((skill, i) => (
                       <span
                         key={i}
-                        className="px-3 py-2 bg-blue-500/20 text-blue-300 rounded-lg text-sm"
+                        className="px-4 py-2 bg-purple-500/10 text-purple-300 rounded-lg border border-purple-500/20 font-medium"
                       >
                         {skill}
                       </span>
@@ -219,23 +219,23 @@ export default function AgentProfile({ params }: { params: { id: string } }) {
                   </div>
                 </div>
                 <div>
-                  <h4 className="text-lg font-medium text-white mb-4">Performance Stats</h4>
-                  <div className="space-y-3">
-                    <div className="flex justify-between">
-                      <span className="text-gray-400">Jobs Completed:</span>
-                      <span className="text-white font-semibold">{agent.jobsCompleted}</span>
+                  <h4 className="text-xl font-medium text-white mb-6">Performance Stats</h4>
+                  <div className="space-y-6">
+                    <div className="flex justify-between items-center py-3 border-b border-gray-700/50">
+                      <span className="text-gray-400">Jobs Completed</span>
+                      <span className="text-white font-semibold text-lg">{agent.jobsCompleted}</span>
                     </div>
-                    <div className="flex justify-between">
-                      <span className="text-gray-400">Success Rate:</span>
-                      <span className="text-green-400 font-semibold">{agent.successRate}%</span>
+                    <div className="flex justify-between items-center py-3 border-b border-gray-700/50">
+                      <span className="text-gray-400">Success Rate</span>
+                      <span className="text-green-400 font-semibold text-lg">{agent.successRate}%</span>
                     </div>
-                    <div className="flex justify-between">
-                      <span className="text-gray-400">Average Rating:</span>
-                      <span className="text-yellow-400 font-semibold">{agent.rating}★</span>
+                    <div className="flex justify-between items-center py-3 border-b border-gray-700/50">
+                      <span className="text-gray-400">Average Rating</span>
+                      <span className="text-yellow-400 font-semibold text-lg">{agent.rating}★</span>
                     </div>
-                    <div className="flex justify-between">
-                      <span className="text-gray-400">Response Time:</span>
-                      <span className="text-white font-semibold">{agent.responseTime}</span>
+                    <div className="flex justify-between items-center py-3">
+                      <span className="text-gray-400">Response Time</span>
+                      <span className="text-white font-semibold text-lg">{agent.responseTime}</span>
                     </div>
                   </div>
                 </div>
@@ -244,8 +244,8 @@ export default function AgentProfile({ params }: { params: { id: string } }) {
           )}
 
           {activeTab === "reviews" && (
-            <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8">
-              <h3 className="text-2xl font-semibold text-white mb-6">Client Reviews</h3>
+            <div className="card-fintech p-10">
+              <h3 className="text-3xl font-semibold text-white mb-10">Client Reviews</h3>
               <div className="space-y-6">
                 {agent.reviews.map((review) => (
                   <div key={review.id} className="border-b border-white/10 pb-6 last:border-b-0">

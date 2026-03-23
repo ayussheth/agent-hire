@@ -7,33 +7,33 @@ export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <nav className="sticky top-0 z-50 bg-black/80 backdrop-blur-md border-b border-white/10">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-gray-900/90 backdrop-blur-xl border-b border-gray-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
+        <div className="flex justify-between items-center h-20">
           {/* Logo */}
-          <Link href="/" className="flex items-center space-x-2">
-            <div className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
-              AgentHire
+          <Link href="/" className="flex items-center">
+            <div className="text-2xl font-bold text-white">
+              Agent<span className="text-purple-500">Hire</span>
             </div>
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden md:flex items-center space-x-10">
             <Link
               href="/agents"
-              className="text-gray-300 hover:text-white transition-colors"
+              className="text-gray-300 hover:text-white font-medium transition-colors duration-200"
             >
               Browse Agents
             </Link>
             <Link
               href="/how-it-works"
-              className="text-gray-300 hover:text-white transition-colors"
+              className="text-gray-300 hover:text-white font-medium transition-colors duration-200"
             >
               How It Works
             </Link>
             <Link
               href="/dashboard"
-              className="text-gray-300 hover:text-white transition-colors"
+              className="text-gray-300 hover:text-white font-medium transition-colors duration-200"
             >
               Dashboard
             </Link>
@@ -41,7 +41,7 @@ export default function Navbar() {
 
           {/* Connect Wallet Button */}
           <div className="hidden md:block">
-            <button className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-6 py-2 rounded-lg font-medium hover:from-blue-600 hover:to-purple-700 transition-all duration-300 transform hover:scale-105">
+            <button className="bg-purple-600 hover:bg-purple-700 text-white px-6 py-3 rounded-lg font-medium transition-all duration-200 hover:-translate-y-0.5">
               Connect Wallet
             </button>
           </div>
@@ -50,7 +50,7 @@ export default function Navbar() {
           <div className="md:hidden">
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="text-gray-300 hover:text-white"
+              className="text-gray-300 hover:text-white p-2"
             >
               <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
@@ -61,30 +61,33 @@ export default function Navbar() {
 
         {/* Mobile menu */}
         {isMenuOpen && (
-          <div className="md:hidden py-4 border-t border-white/10">
-            <div className="flex flex-col space-y-4">
+          <div className="md:hidden border-t border-gray-800 bg-gray-900/95 backdrop-blur-xl">
+            <div className="py-4 space-y-4">
               <Link
                 href="/agents"
-                className="text-gray-300 hover:text-white transition-colors"
+                className="block text-gray-300 hover:text-white font-medium py-2 transition-colors"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Browse Agents
               </Link>
               <Link
                 href="/how-it-works"
-                className="text-gray-300 hover:text-white transition-colors"
+                className="block text-gray-300 hover:text-white font-medium py-2 transition-colors"
                 onClick={() => setIsMenuOpen(false)}
               >
                 How It Works
               </Link>
               <Link
                 href="/dashboard"
-                className="text-gray-300 hover:text-white transition-colors"
+                className="block text-gray-300 hover:text-white font-medium py-2 transition-colors"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Dashboard
               </Link>
-              <button className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-6 py-2 rounded-lg font-medium hover:from-blue-600 hover:to-purple-700 transition-all duration-300 text-left">
+              <button
+                className="w-full text-left bg-purple-600 hover:bg-purple-700 text-white px-6 py-3 rounded-lg font-medium transition-all duration-200"
+                onClick={() => setIsMenuOpen(false)}
+              >
                 Connect Wallet
               </button>
             </div>

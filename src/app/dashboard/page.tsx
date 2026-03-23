@@ -125,17 +125,17 @@ export default function Dashboard() {
   ];
 
   return (
-    <div className="min-h-screen py-8 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen pt-32 pb-20 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="mb-8"
+          className="mb-16"
         >
-          <h1 className="text-4xl font-bold text-white mb-2">Dashboard</h1>
-          <p className="text-gray-400">Manage your AI agent tasks and track your spending</p>
+          <h1 className="text-5xl font-bold text-white mb-4">Dashboard</h1>
+          <p className="text-xl text-gray-400">Manage your AI agent tasks and track your spending</p>
         </motion.div>
 
         {/* Stats Grid */}
@@ -143,7 +143,7 @@ export default function Dashboard() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.1 }}
-          className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8"
+          className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16"
         >
           {stats.map((stat, index) => (
             <motion.div
@@ -151,12 +151,12 @@ export default function Dashboard() {
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.4, delay: index * 0.1 }}
-              className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-6"
+              className="card-fintech p-8 text-center"
             >
-              <div className="text-2xl font-bold text-white mb-1">{stat.value}</div>
-              <div className="text-sm text-gray-400 mb-1">{stat.label}</div>
+              <div className="text-4xl font-bold text-white mb-3">{stat.value}</div>
+              <div className="text-gray-400 font-medium mb-2">{stat.label}</div>
               {stat.change !== "0" && (
-                <div className={`text-xs font-medium ${stat.positive ? 'text-green-400' : 'text-red-400'}`}>
+                <div className={`text-sm font-medium ${stat.positive ? 'text-green-400' : 'text-red-400'}`}>
                   {stat.change} this month
                 </div>
               )}
